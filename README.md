@@ -35,6 +35,32 @@ A modern [Expo](https://expo.dev) project template built with **React Native**, 
 | [`expo-symbols`](https://docs.expo.dev/versions/v56.0.0/sdk/symbols/) | `~56.0.6` | SF Symbols support for iOS |
 | [`expo-glass-effect`](https://docs.expo.dev/versions/v56.0.0/sdk/glass-effect/) | `~56.0.4` | Native glassmorphism / blur effects |
 | [`expo-image`](https://docs.expo.dev/versions/v56.0.0/sdk/image/) | `~56.0.11` | High-performance image component with caching & transitions |
+| [`@gorhom/bottom-sheet`](https://gorhom.dev/react-native-bottom-sheet/) | `^5.2.14` | High-performance, cross-platform bottom sheet component |
+
+---
+
+### Data Fetching & State
+
+| Package | Version | Description |
+|---|---|---|
+| [`@tanstack/react-query`](https://tanstack.com/query/latest) | `^5.101.2` | Powerful async state management — data fetching, caching, synchronization |
+
+---
+
+### Forms & Validation
+
+| Package | Version | Description |
+|---|---|---|
+| [`react-hook-form`](https://react-hook-form.com/) | `^7.80.0` | Performant, flexible form state management with minimal re-renders |
+| [`zod`](https://zod.dev/) | `^4.4.3` | TypeScript-first schema declaration and runtime validation |
+
+---
+
+### Storage
+
+| Package | Version | Description |
+|---|---|---|
+| [`react-native-mmkv`](https://github.com/mrousavy/react-native-mmkv) | `^4.3.2` | Ultra-fast key-value storage powered by Tencent's MMKV (~30× faster than AsyncStorage) |
 
 ---
 

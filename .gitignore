@@ -43,3 +43,5 @@ example
 /android
 
 .idea
+.yarn
+/.yarn
