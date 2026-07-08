@@ -1,0 +1,5 @@
+
+#: src/components/ProgressGuide/FollowDialog.tsx:516
+#: src/screens/Search/modules/ExploreSuggestedAccounts.tsx:127
+msgid "(active)"
+msgstr ""
