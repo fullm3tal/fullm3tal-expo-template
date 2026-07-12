@@ -8,13 +8,6 @@ import axios, {
 import i18next from "i18next";
 import { prettifyJson } from "./utils";
 
-interface HttpClient {
-  get<R>(url: string, config?: AxiosRequestConfig): Promise<R>;
-  post<T, R>(url: string, data?: T, config?: AxiosRequestConfig): Promise<R>;
-  put<T, R>(url: string, data?: T, config?: AxiosRequestConfig): Promise<R>;
-  delete<R>(url: string, config?: AxiosRequestConfig): Promise<R>;
-}
-
 const DEFAULT_TIMEOUT_MS = 10_000;
 
 type RequestWithMeta = InternalAxiosRequestConfig & {
@@ -145,6 +138,13 @@ client.interceptors.response.use(
   },
 );
 
+interface HttpClient {
+  get<R>(url: string, config?: AxiosRequestConfig): Promise<R>;
+  post<T, R>(url: string, data?: T, config?: AxiosRequestConfig): Promise<R>;
+  put<T, R>(url: string, data?: T, config?: AxiosRequestConfig): Promise<R>;
+  delete<R>(url: string, config?: AxiosRequestConfig): Promise<R>;
+}
+
 class HttpClientImpl implements HttpClient {
   constructor(private readonly axiosInstance: AxiosInstance) {}
 
@@ -176,3 +176,5 @@ class HttpClientImpl implements HttpClient {
     return response.data;
   }
 }
+
+export const service = new HttpClientImpl(client);
