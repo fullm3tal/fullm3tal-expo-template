@@ -1,7 +1,19 @@
 import { ErrorResponse } from "@/domain/remote/ErrorResponse";
-import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
+import axios, {
+  AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  InternalAxiosRequestConfig,
+} from "axios";
 import i18next from "i18next";
 import { prettifyJson } from "./utils";
+
+interface HttpClient {
+  get<R>(url: string, config?: AxiosRequestConfig): Promise<R>;
+  post<T, R>(url: string, data?: T, config?: AxiosRequestConfig): Promise<R>;
+  put<T, R>(url: string, data?: T, config?: AxiosRequestConfig): Promise<R>;
+  delete<R>(url: string, config?: AxiosRequestConfig): Promise<R>;
+}
 
 const DEFAULT_TIMEOUT_MS = 10_000;
 
@@ -17,7 +29,7 @@ function getRequestLabel(config: InternalAxiosRequestConfig): string {
   return `${method} ${url}`;
 }
 
-export const axiosClient = axios.create({
+const client = axios.create({
   baseURL: "http://192.168.1.5:8080",
   timeout: DEFAULT_TIMEOUT_MS,
   headers: {
@@ -25,7 +37,7 @@ export const axiosClient = axios.create({
   },
 });
 
-axiosClient.interceptors.request.use(
+client.interceptors.request.use(
   (config) => {
     const request = config as RequestWithMeta;
     request.metadata = { startTime: Date.now() };
@@ -46,7 +58,7 @@ axiosClient.interceptors.request.use(
   },
 );
 
-axiosClient.interceptors.response.use(
+client.interceptors.response.use(
   (response) => {
     const request = response.config as RequestWithMeta;
     const elapsedMs = request.metadata
@@ -132,3 +144,35 @@ axiosClient.interceptors.response.use(
     return Promise.reject(errorResponse);
   },
 );
+
+class HttpClientImpl implements HttpClient {
+  constructor(private readonly axiosInstance: AxiosInstance) {}
+
+  async get<R>(url: string, config?: AxiosRequestConfig): Promise<R> {
+    const response = await this.axiosInstance.get<R>(url, config);
+    return response.data;
+  }
+
+  async post<T, R>(
+    url: string,
+    data?: T,
+    config?: AxiosRequestConfig,
+  ): Promise<R> {
+    const response = await this.axiosInstance.post<R>(url, data, config);
+    return response.data;
+  }
+
+  async put<T, R>(
+    url: string,
+    data?: T,
+    config?: AxiosRequestConfig,
+  ): Promise<R> {
+    const response = await this.axiosInstance.put<R>(url, data, config);
+    return response.data;
+  }
+
+  async delete<R>(url: string, config?: AxiosRequestConfig): Promise<R> {
+    const response = await this.axiosInstance.delete<R>(url, config);
+    return response.data;
+  }
+}
