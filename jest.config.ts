@@ -15,6 +15,7 @@ const config: Config = {
       {
         diagnostics: false,
         tsconfig: {
+          jsx: "react-jsx",
           types: ["jest"],
           esModuleInterop: true,
           moduleResolution: "node",
