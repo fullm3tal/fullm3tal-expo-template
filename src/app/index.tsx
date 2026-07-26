@@ -1,3 +1,4 @@
+import Constants from "expo-constants";
 import { StyleSheet, Text, View, ViewStyle } from "react-native";
 
 const INDICATOR_STYLE: ViewStyle = {
@@ -11,9 +12,13 @@ const INDICATOR_STYLE: ViewStyle = {
 };
 
 export default function Index() {
+  const { appVariant, isDarkAllowed } = Constants.expoConfig?.extra ?? {};
+
   return (
     <View style={{ flex: 1 }}>
-      <Text>Hello World</Text>
+      <Text>Hello Worldsss</Text>
+      <Text>{appVariant} Test</Text>
+      <Text>{isDarkAllowed.toString()}</Text>
     </View>
   );
 }

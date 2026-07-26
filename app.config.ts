@@ -75,6 +75,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     reactCompiler: true,
   },
   extra: {
+    appVariant: process.env.APP_VARIANT,
+    isDarkAllowed: process.env.IS_DARK_ALLOWED === "true",
     eas: {
       projectId: "bed172d6-2042-411d-b8be-b451871b274c",
     },
