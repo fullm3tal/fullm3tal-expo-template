@@ -7,6 +7,12 @@
         "APP_VARIANT": "development"
       }
     },
+    "staging": {
+      "distribution": "internal",
+      "env": {
+        "APP_VARIANT": "staging"
+      }
+    },
     "preview": {
       "distribution": "internal",
       "env": {

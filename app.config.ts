@@ -1,11 +1,15 @@
 import { ConfigContext, ExpoConfig } from "@expo/config";
 
 const IS_PRODUCTION = process.env.APP_VARIANT === "production";
+const IS_STAGING = process.env.APP_VARIANT === "staging";
 const IS_PREVIEW = process.env.APP_VARIANT === "preview";
 
 const getUniqueIdentifier = () => {
   if (IS_PRODUCTION) {
     return "com.azurebeyond.prod";
+  }
+  if (IS_STAGING) {
+    return "com.azurebeyond.staging";
   }
   if (IS_PREVIEW) {
     return "com.azurebeyond.preview";
@@ -16,6 +20,9 @@ const getUniqueIdentifier = () => {
 const getAppName = () => {
   if (IS_PRODUCTION) {
     return "Azure Beyond";
+  }
+  if (IS_STAGING) {
+    return "Azure Beyond (Staging)";
   }
   if (IS_PREVIEW) {
     return "Azure Beyond (Preview)";
