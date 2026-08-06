@@ -1,6 +1,5 @@
 import type { ThemeColors } from "./color";
 import type { ThemeElevation } from "./elevation";
-import type { MotionConfig } from "./motion";
 import type { ThemeShapes } from "./shape";
 import type { Typescale } from "./typography";
 
@@ -12,7 +11,7 @@ export type Theme = {
   colors: ThemeColors;
   fonts: Typescale;
   shapes: ThemeShapes;
-  motion: MotionConfig;
+  // motion: MotionConfig;
   elevation: ThemeElevation;
 };
 

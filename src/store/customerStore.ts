@@ -22,11 +22,9 @@ export const useCustomerStore = create<CustomerState>((set) => ({
       id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
       ...payload,
     };
-
     set((state) => ({
       customers: [customer, ...state.customers],
     }));
-
     return customer;
   },
 }));
