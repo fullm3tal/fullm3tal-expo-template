@@ -1,4 +1,4 @@
-import Constants from "expo-constants";
+import { useAppTheme } from "@/theme/theming/useAppTheme";
 import { StyleSheet, Text, View, ViewStyle } from "react-native";
 
 const INDICATOR_STYLE: ViewStyle = {
@@ -12,13 +12,17 @@ const INDICATOR_STYLE: ViewStyle = {
 };
 
 export default function Index() {
-  const { appVariant, isDarkAllowed } = Constants.expoConfig?.extra ?? {};
+  const { colors, fonts } = useAppTheme();
 
   return (
     <View style={{ flex: 1 }}>
       <Text>Hello Worldsss</Text>
-      <Text>{appVariant} Test</Text>
-      <Text>{isDarkAllowed.toString()}</Text>
+      <Text style={{ backgroundColor: colors.primary }}>
+        {colors.primary.toString()}
+      </Text>
+      <Text style={{ backgroundColor: colors.secondary, ...fonts.bodySmall }}>
+        {colors.secondary.toString()}
+      </Text>
     </View>
   );
 }
