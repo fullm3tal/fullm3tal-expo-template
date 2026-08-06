@@ -3,20 +3,21 @@ import { useAppTheme } from "@/theme/theming/useAppTheme";
 import { useLanguage } from "@/locales/LanguageProvider";
 import type { ColorScheme, ColorTheme } from "@/theme/tokens/color";
 import { Pressable, ScrollView, StyleSheet, View } from "react-native";
+import { useTranslation } from "react-i18next";
 
-const COLOR_THEMES: { label: string; value: ColorTheme; swatch: string }[] = [
-  { label: "Blue", value: "blue", swatch: "#1976D2" },
-  { label: "Red", value: "red", swatch: "#D32F2F" },
+const COLOR_THEMES: { labelKey: string; value: ColorTheme; swatch: string }[] = [
+  { labelKey: "color_theme_blue", value: "blue", swatch: "#1976D2" },
+  { labelKey: "color_theme_red", value: "red", swatch: "#D32F2F" },
 ];
 
-const COLOR_SCHEMES: { label: string; value: ColorScheme; icon: string }[] = [
-  { label: "Light", value: "light", icon: "☀️" },
-  { label: "Dark", value: "dark", icon: "🌙" },
+const COLOR_SCHEMES: { labelKey: string; value: ColorScheme; icon: string }[] = [
+  { labelKey: "appearance_light", value: "light", icon: "☀️" },
+  { labelKey: "appearance_dark", value: "dark", icon: "🌙" },
 ];
 
 const LANGUAGES = [
-  { label: "English", value: "en", icon: "🇺🇸" },
-  { label: "हिंदी", value: "hi", icon: "🇮🇳" },
+  { labelKey: "language_english", value: "en", icon: "🇺🇸" },
+  { labelKey: "language_hindi", value: "hi", icon: "🇮🇳" },
 ];
 
 export default function Index() {
@@ -24,6 +25,7 @@ export default function Index() {
     useAppTheme();
 
   const { language, setLanguage } = useLanguage();
+  const { t } = useTranslation();
 
   const currentScheme: ColorScheme = dark ? "dark" : "light";
 
@@ -35,7 +37,7 @@ export default function Index() {
       {/* ── Header ── */}
       <View style={styles.header}>
         <Text style={[fonts.headlineMedium, { color: colors.onBackground }]}>
-          Theme Switcher
+          {t("theme_switcher_title")}
         </Text>
         <Text
           style={[
@@ -43,7 +45,7 @@ export default function Index() {
             { color: colors.onSurfaceVariant, marginTop: 4 },
           ]}
         >
-          Customize the look and feel of your app.
+          {t("theme_switcher_subtitle")}
         </Text>
       </View>
 
@@ -55,7 +57,7 @@ export default function Index() {
             { color: colors.onSurface, marginBottom: 12 },
           ]}
         >
-          Appearance
+          {t("appearance_title")}
         </Text>
         <View style={styles.schemeRow}>
           {COLOR_SCHEMES.map((scheme) => {
@@ -66,7 +68,6 @@ export default function Index() {
                 onPress={() => setColorScheme(scheme.value)}
                 style={[
                   styles.schemeCard,
-                  ,
                   {
                     borderRadius: shapes.corner.extraLargeIncreased,
                     backgroundColor: isActive
@@ -89,7 +90,7 @@ export default function Index() {
                     },
                   ]}
                 >
-                  {scheme.label}
+                  {t(scheme.labelKey)}
                 </Text>
               </Pressable>
             );
@@ -105,7 +106,7 @@ export default function Index() {
             { color: colors.onSurface, marginBottom: 12 },
           ]}
         >
-          Language
+          {t("language_title")}
         </Text>
         <View style={styles.schemeRow}>
           {LANGUAGES.map((lang) => {
@@ -138,7 +139,7 @@ export default function Index() {
                     },
                   ]}
                 >
-                  {lang.label}
+                  {t(lang.labelKey)}
                 </Text>
               </Pressable>
             );
@@ -154,7 +155,7 @@ export default function Index() {
             { color: colors.onSurface, marginBottom: 12 },
           ]}
         >
-          Color Theme
+          {t("color_theme_title")}
         </Text>
         <View style={styles.themeGrid}>
           {COLOR_THEMES.map((theme) => {
@@ -180,7 +181,7 @@ export default function Index() {
                   style={[styles.swatch, { backgroundColor: theme.swatch }]}
                 />
                 <Text style={[fonts.labelLarge, { color: colors.onSurface }]}>
-                  {theme.label}
+                  {t(theme.labelKey)}
                 </Text>
               </Pressable>
             );
@@ -196,7 +197,7 @@ export default function Index() {
             { color: colors.onSurface, marginBottom: 12 },
           ]}
         >
-          Preview
+          {t("preview_title")}
         </Text>
 
         <View
@@ -213,7 +214,7 @@ export default function Index() {
             style={[styles.previewChip, { backgroundColor: colors.primary }]}
           >
             <Text style={[fonts.labelLarge, { color: colors.onPrimary }]}>
-              Primary
+              {t("preview_primary")}
             </Text>
           </View>
 
@@ -222,7 +223,7 @@ export default function Index() {
             style={[styles.previewChip, { backgroundColor: colors.secondary }]}
           >
             <Text style={[fonts.labelLarge, { color: colors.onSecondary }]}>
-              Secondary
+              {t("preview_secondary")}
             </Text>
           </View>
 
@@ -231,14 +232,14 @@ export default function Index() {
             style={[styles.previewChip, { backgroundColor: colors.tertiary }]}
           >
             <Text style={[fonts.labelLarge, { color: colors.onTertiary }]}>
-              Tertiary
+              {t("preview_tertiary")}
             </Text>
           </View>
 
           {/* Error chip */}
           <View style={[styles.previewChip, { backgroundColor: colors.error }]}>
             <Text style={[fonts.labelLarge, { color: colors.onError }]}>
-              Error
+              {t("preview_error")}
             </Text>
           </View>
         </View>
