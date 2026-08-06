@@ -1,5 +1,6 @@
 import Text from "@/components/primitives/text";
 import { useAppTheme } from "@/theme/theming/useAppTheme";
+import { useLanguage } from "@/locales/LanguageProvider";
 import type { ColorScheme, ColorTheme } from "@/theme/tokens/color";
 import { Pressable, ScrollView, StyleSheet, View } from "react-native";
 
@@ -13,9 +14,16 @@ const COLOR_SCHEMES: { label: string; value: ColorScheme; icon: string }[] = [
   { label: "Dark", value: "dark", icon: "🌙" },
 ];
 
+const LANGUAGES = [
+  { label: "English", value: "en", icon: "🇺🇸" },
+  { label: "हिंदी", value: "hi", icon: "🇮🇳" },
+];
+
 export default function Index() {
   const { colors, fonts, dark, shapes, setColorScheme, setColorTheme } =
     useAppTheme();
+
+  const { language, setLanguage } = useLanguage();
 
   const currentScheme: ColorScheme = dark ? "dark" : "light";
 
@@ -82,6 +90,55 @@ export default function Index() {
                   ]}
                 >
                   {scheme.label}
+                </Text>
+              </Pressable>
+            );
+          })}
+        </View>
+      </View>
+
+      {/* ── Language Section ── */}
+      <View style={styles.section}>
+        <Text
+          style={[
+            fonts.titleMedium,
+            { color: colors.onSurface, marginBottom: 12 },
+          ]}
+        >
+          Language
+        </Text>
+        <View style={styles.schemeRow}>
+          {LANGUAGES.map((lang) => {
+            const isActive = language === lang.value;
+            return (
+              <Pressable
+                key={lang.value}
+                onPress={() => setLanguage(lang.value)}
+                style={[
+                  styles.schemeCard,
+                  {
+                    borderRadius: shapes.corner.extraLargeIncreased,
+                    backgroundColor: isActive
+                      ? colors.primaryContainer
+                      : colors.surfaceContainerHigh,
+                    borderColor: isActive
+                      ? colors.primary
+                      : colors.outlineVariant,
+                  },
+                ]}
+              >
+                <Text style={styles.schemeIcon}>{lang.icon}</Text>
+                <Text
+                  style={[
+                    fonts.labelLarge,
+                    {
+                      color: isActive
+                        ? colors.onPrimaryContainer
+                        : colors.onSurfaceVariant,
+                    },
+                  ]}
+                >
+                  {lang.label}
                 </Text>
               </Pressable>
             );
