@@ -14,21 +14,11 @@ type Contrast = "standard"; // extend with 'medium' | 'high' when those ship
 
 export type ColorScheme = "light" | "dark";
 
-export type ColorTheme =
-  | "blue"
-  | "green"
-  | "orange"
-  | "purple"
-  | "red"
-  | "yellow";
+export type ColorTheme = "red" | "blue";
 
 const palettes: Record<ColorTheme, Palette> = {
   blue: bluePalette,
   red: redPalette,
-  green: defaultPalette,
-  orange: defaultPalette,
-  purple: defaultPalette,
-  yellow: defaultPalette,
 };
 
 function hexToRgba(hex: string, opacity: number): string {

@@ -1,14 +1,11 @@
+import Text from "@/components/primitives/text";
 import { useAppTheme } from "@/theme/theming/useAppTheme";
 import type { ColorScheme, ColorTheme } from "@/theme/tokens/color";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, View } from "react-native";
 
 const COLOR_THEMES: { label: string; value: ColorTheme; swatch: string }[] = [
   { label: "Blue", value: "blue", swatch: "#1976D2" },
   { label: "Red", value: "red", swatch: "#D32F2F" },
-  { label: "Green", value: "green", swatch: "#388E3C" },
-  { label: "Orange", value: "orange", swatch: "#F57C00" },
-  { label: "Purple", value: "purple", swatch: "#7B1FA2" },
-  { label: "Yellow", value: "yellow", swatch: "#FBC02D" },
 ];
 
 const COLOR_SCHEMES: { label: string; value: ColorScheme; icon: string }[] = [
