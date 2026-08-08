@@ -37,7 +37,7 @@ function ThemeProvider({children}: {children: React.ReactNode}) {
         colors: buildScheme(theme, colorScheme as ColorScheme),
       }))
     },
-    [isDarkAllowed, isDarkMode]
+    [isDarkAllowed, isDarkMode],
   )
 
   const setColorScheme = useCallback(
@@ -50,7 +50,7 @@ function ThemeProvider({children}: {children: React.ReactNode}) {
         colors: buildScheme(colorTheme as ColorTheme, scheme),
       }))
     },
-    [isDarkAllowed, isDarkMode]
+    [isDarkAllowed, isDarkMode],
   )
 
   useEffect(() => {
@@ -72,7 +72,7 @@ function ThemeProvider({children}: {children: React.ReactNode}) {
         colors: buildScheme(colorTheme, colorScheme),
       }))
     }
-    
+
     initAppTheme()
   }, [isDarkAllowed, isDarkMode])
 
