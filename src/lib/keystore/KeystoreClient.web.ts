@@ -26,7 +26,7 @@ class KeystoreClient {
   private get isStorageAvailable(): boolean {
     try {
       return typeof window !== 'undefined' && 'localStorage' in window && window.localStorage !== null
-    } catch (e) {
+    } catch {
       return false
     }
   }
