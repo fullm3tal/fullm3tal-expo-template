@@ -1,0 +1,26 @@
+name: Code Quality Check
+
+on:
+  pull_request:
+    branches: [main, master, develop]
+
+jobs:
+  lint:
+    name: Run Linter
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn' # Use 'yarn' or 'pnpm' if you use those package managers
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile # Use 'yarn install --frozen-lockfile' or 'pnpm install --frozen-lockfile' if applicable
+
+      - name: Run ESLint
+        run: yarn lint
