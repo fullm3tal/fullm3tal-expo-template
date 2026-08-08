@@ -21,6 +21,11 @@ jobs:
           node-version: 20
           cache: 'yarn' # Use 'yarn' or 'pnpm' if you use those package managers
 
+      - name: Enable Corepack and set Yarn version
+        run: |
+          corepack enable
+          corepack prepare yarn@4.10.2 --activate
+
       - name: Install Dependencies
         run: yarn install --frozen-lockfile # Use 'yarn install --frozen-lockfile' or 'pnpm install --frozen-lockfile' if applicable
 
