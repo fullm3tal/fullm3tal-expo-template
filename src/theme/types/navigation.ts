@@ -1,11 +1,11 @@
 export type NavigationTheme = {
-  dark: boolean;
+  dark: boolean
   colors: {
-    primary: string;
-    background: string;
-    card: string;
-    text: string;
-    border: string;
-    notification: string;
-  };
-};
+    primary: string
+    background: string
+    card: string
+    text: string
+    border: string
+    notification: string
+  }
+}

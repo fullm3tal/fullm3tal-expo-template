@@ -1,14 +1,9 @@
-import React from "react";
-import {
-  Text as RNText,
-  type TextProps as RNTextProps,
-  type StyleProp,
-  type TextStyle,
-} from "react-native";
+import React from 'react'
+import {Text as RNText, type TextProps as RNTextProps, type StyleProp, type TextStyle} from 'react-native'
 
-import { useAppTheme } from "@/theme/theming/useAppTheme";
-import type { ColorRole, ThemeColors } from "@/theme/types/color";
-import type { TypescaleKey } from "@/theme/types/typography";
+import {useAppTheme} from '@/theme/theming/useAppTheme'
+import type {ColorRole, ThemeColors} from '@/theme/types/color'
+import type {TypescaleKey} from '@/theme/types/typography'
 
 // ---------------------------------------------------------------------------
 // Interface
@@ -28,7 +23,7 @@ export interface ITextWrapperProps extends RNTextProps {
    *
    * @default "bodyMedium"
    */
-  variant?: TypescaleKey;
+  variant?: TypescaleKey
 
   /**
    * A semantic color role from the active theme palette.
@@ -36,13 +31,13 @@ export interface ITextWrapperProps extends RNTextProps {
    *
    * @default "onSurface"
    */
-  color?: ColorRole;
+  color?: ColorRole
 
   /**
    * Additional styles applied **after** the theme variant and color,
    * allowing the consumer to override any resolved value.
    */
-  style?: StyleProp<TextStyle>;
+  style?: StyleProp<TextStyle>
 }
 
 // ---------------------------------------------------------------------------
@@ -67,32 +62,24 @@ export interface ITextWrapperProps extends RNTextProps {
  * </TextWrapper>
  * ```
  */
-const Text = React.forwardRef<
-  React.ElementRef<typeof RNText>,
-  ITextWrapperProps
->(
-  (
-    { variant = "bodyMedium", color = "onSurface", style, children, ...rest },
-    ref,
-  ) => {
-    const { colors, fonts } = useAppTheme();
+const Text = React.forwardRef<React.ElementRef<typeof RNText>, ITextWrapperProps>(({variant = 'bodyMedium', color = 'onSurface', style, children, ...rest}, ref) => {
+  const {colors, fonts} = useAppTheme()
 
-    const variantStyle = fonts[variant];
-    const resolvedColor = colors[color as keyof ThemeColors];
+  const variantStyle = fonts[variant]
+  const resolvedColor = colors[color as keyof ThemeColors]
 
-    return (
-      <RNText
-        ref={ref}
-        style={[variantStyle, { color: resolvedColor as string }, style]}
-        allowFontScaling={false}
-        {...rest}
-      >
-        {children}
-      </RNText>
-    );
-  },
-);
+  return (
+    <RNText
+      ref={ref}
+      style={[variantStyle, {color: resolvedColor as string}, style]}
+      allowFontScaling={false}
+      {...rest}
+    >
+      {children}
+    </RNText>
+  )
+})
 
-Text.displayName = "Text";
+Text.displayName = 'Text'
 
-export default Text;
+export default Text

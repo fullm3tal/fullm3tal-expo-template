@@ -1,4 +1,4 @@
-import * as SecureStore from "expo-secure-store";
+import * as SecureStore from 'expo-secure-store'
 
 /**
  * Singleton utility class for interacting with the device's secure storage
@@ -6,7 +6,7 @@ import * as SecureStore from "expo-secure-store";
  * encrypted key-value pairs.
  */
 class KeystoreClient {
-  private static instance: KeystoreClient;
+  private static instance: KeystoreClient
 
   private constructor() {
     // Private constructor prevents direct instantiation
@@ -15,9 +15,9 @@ class KeystoreClient {
   /** Returns the singleton KeystoreClient instance. */
   static getInstance(): KeystoreClient {
     if (!KeystoreClient.instance) {
-      KeystoreClient.instance = new KeystoreClient();
+      KeystoreClient.instance = new KeystoreClient()
     }
-    return KeystoreClient.instance;
+    return KeystoreClient.instance
   }
 
   /**
@@ -28,12 +28,8 @@ class KeystoreClient {
    * @param value - The string value to store.
    * @param options - Optional {@link SecureStore.SecureStoreOptions}.
    */
-  async save(
-    key: string,
-    value: string,
-    options?: SecureStore.SecureStoreOptions,
-  ): Promise<void> {
-    await SecureStore.setItemAsync(key, value, options);
+  async save(key: string, value: string, options?: SecureStore.SecureStoreOptions): Promise<void> {
+    await SecureStore.setItemAsync(key, value, options)
   }
 
   /**
@@ -43,19 +39,16 @@ class KeystoreClient {
    * @param options - Optional {@link SecureStore.SecureStoreOptions}.
    * @returns The stored string value, or `null` if no entry exists for the key.
    */
-  async getValueFor(
-    key: string,
-    options?: SecureStore.SecureStoreOptions,
-  ): Promise<string | null> {
+  async getValueFor(key: string, options?: SecureStore.SecureStoreOptions): Promise<string | null> {
     try {
-      const result = await SecureStore.getItemAsync(key, options);
+      const result = await SecureStore.getItemAsync(key, options)
       if (result) {
-        return result;
+        return result
       }
     } catch (error) {
-      console.error("Error fetching value for key:", key, error);
+      console.error('Error fetching value for key:', key, error)
     }
-    return null;
+    return null
   }
 
   /**
@@ -69,15 +62,12 @@ class KeystoreClient {
    * @param options - Optional {@link SecureStore.SecureStoreOptions}.
    * @returns The stored string value, or `null` if no entry exists.
    */
-  getValueSync(
-    key: string,
-    options?: SecureStore.SecureStoreOptions,
-  ): string | null {
+  getValueSync(key: string, options?: SecureStore.SecureStoreOptions): string | null {
     try {
-      return SecureStore.getItem(key, options);
+      return SecureStore.getItem(key, options)
     } catch (error) {
-      console.error("Error fetching value synchronously for key:", key, error);
-      return null;
+      console.error('Error fetching value synchronously for key:', key, error)
+      return null
     }
   }
 
@@ -87,14 +77,11 @@ class KeystoreClient {
    * @param key     - The key whose value should be deleted.
    * @param options - Optional {@link SecureStore.SecureStoreOptions}.
    */
-  async delete(
-    key: string,
-    options?: SecureStore.SecureStoreOptions,
-  ): Promise<void> {
+  async delete(key: string, options?: SecureStore.SecureStoreOptions): Promise<void> {
     try {
-      await SecureStore.deleteItemAsync(key, options);
+      await SecureStore.deleteItemAsync(key, options)
     } catch (error) {
-      console.error("Error deleting value for key:", key, error);
+      console.error('Error deleting value for key:', key, error)
     }
   }
 
@@ -104,7 +91,7 @@ class KeystoreClient {
    * @returns `true` if SecureStore is available (Android & iOS), `false` otherwise.
    */
   async isAvailable(): Promise<boolean> {
-    return SecureStore.isAvailableAsync();
+    return SecureStore.isAvailableAsync()
   }
 
   /**
@@ -114,8 +101,8 @@ class KeystoreClient {
    * @returns `true` if the device supports sufficiently secure biometric auth.
    */
   canUseBiometricAuthentication(): boolean {
-    return SecureStore.canUseBiometricAuthentication();
+    return SecureStore.canUseBiometricAuthentication()
   }
 }
 
-export default KeystoreClient.getInstance();
+export default KeystoreClient.getInstance()

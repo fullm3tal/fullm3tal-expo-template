@@ -1,29 +1,29 @@
-import type { Typescale } from "../types";
-import { typeface } from "./ref/typeface";
+import type {Typescale} from '../types'
+import {typeface} from './ref/typeface'
 
 const regularType = {
   fontFamily: typeface.brandRegular,
   letterSpacing: 0,
   fontWeight: typeface.weightRegular,
-};
+}
 
 const mediumType = {
   fontFamily: typeface.plainMedium,
   letterSpacing: 0.15,
   fontWeight: typeface.weightMedium,
-};
+}
 
 const emphasizedMediumType = {
   fontFamily: typeface.plainMedium,
   letterSpacing: 0,
   fontWeight: typeface.weightMedium,
-};
+}
 
 const emphasizedBoldType = {
   fontFamily: typeface.plainMedium,
   letterSpacing: 0,
   fontWeight: typeface.weightBold,
-};
+}
 
 /** md.sys.typescale.* */
 export const typescale = {
@@ -212,6 +212,6 @@ export const typescale = {
   default: {
     ...regularType,
   },
-};
+}
 
-export const defaultFonts: Typescale = typescale;
+export const defaultFonts: Typescale = typescale

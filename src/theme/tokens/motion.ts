@@ -1,10 +1,4 @@
-import type {
-  MotionConfig,
-  MotionDuration,
-  MotionEasing,
-  RawSpring,
-  SpringConfig,
-} from "../types";
+import type {MotionConfig, MotionDuration, MotionEasing, RawSpring, SpringConfig} from '../types'
 
 // Spring, easing curves and duration constants per the M3 spec:
 // https://m3.material.io/styles/motion/easing-and-duration/tokens-specs
@@ -12,36 +6,36 @@ import type {
 const expressiveSpring = {
   spring: {
     fast: {
-      spatial: { stiffness: 800, damping: 0.6 },
-      effects: { stiffness: 3800, damping: 1 },
+      spatial: {stiffness: 800, damping: 0.6},
+      effects: {stiffness: 3800, damping: 1},
     },
     default: {
-      spatial: { stiffness: 380, damping: 0.8 },
-      effects: { stiffness: 1600, damping: 1 },
+      spatial: {stiffness: 380, damping: 0.8},
+      effects: {stiffness: 1600, damping: 1},
     },
     slow: {
-      spatial: { stiffness: 200, damping: 0.8 },
-      effects: { stiffness: 800, damping: 1 },
+      spatial: {stiffness: 200, damping: 0.8},
+      effects: {stiffness: 800, damping: 1},
     },
   },
-};
+}
 
 const standardSpring = {
   spring: {
     fast: {
-      spatial: { stiffness: 1400, damping: 0.9 },
-      effects: { stiffness: 3800, damping: 1 },
+      spatial: {stiffness: 1400, damping: 0.9},
+      effects: {stiffness: 3800, damping: 1},
     },
     default: {
-      spatial: { stiffness: 700, damping: 0.9 },
-      effects: { stiffness: 1600, damping: 1 },
+      spatial: {stiffness: 700, damping: 0.9},
+      effects: {stiffness: 1600, damping: 1},
     },
     slow: {
-      spatial: { stiffness: 300, damping: 0.9 },
-      effects: { stiffness: 800, damping: 1 },
+      spatial: {stiffness: 300, damping: 0.9},
+      effects: {stiffness: 800, damping: 1},
     },
   },
-};
+}
 
 export const motionEasing: MotionEasing = {
   emphasized: [0.2, 0, 0, 1],
@@ -51,7 +45,7 @@ export const motionEasing: MotionEasing = {
   standardAccelerate: [0.3, 0, 1, 1],
   standardDecelerate: [0, 0, 0, 1],
   linear: [0, 0, 1, 1],
-};
+}
 
 export const motionDuration: MotionDuration = {
   short1: 50,
@@ -70,19 +64,19 @@ export const motionDuration: MotionDuration = {
   extraLong2: 800,
   extraLong3: 900,
   extraLong4: 1000,
-};
+}
 
 export const expressiveMotion: MotionConfig = {
   ...expressiveSpring,
   easing: motionEasing,
   duration: motionDuration,
-};
+}
 
 export const standardMotion: MotionConfig = {
   ...standardSpring,
   easing: motionEasing,
   duration: motionDuration,
-};
+}
 
 /**
  * Converts a `SpringConfig` (spec damping ratio 0–1) to the raw damping
@@ -101,13 +95,10 @@ export const standardMotion: MotionConfig = {
  *   toRawSpring(theme.motion.spring.fast.spatial)
  * );
  */
-export function toRawSpring({
-  stiffness,
-  damping: ratio,
-}: SpringConfig): RawSpring {
+export function toRawSpring({stiffness, damping: ratio}: SpringConfig): RawSpring {
   return {
     stiffness,
     damping: ratio * 2 * Math.sqrt(stiffness),
     mass: 1, // as per MD specs
-  };
+  }
 }

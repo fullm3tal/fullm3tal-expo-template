@@ -94,4 +94,4 @@ export const palette = {
   error20: 'rgba(96, 20, 16, 1)',
   error10: 'rgba(65, 14, 11, 1)',
   error0: 'rgba(0, 0, 0, 1)',
-} as const;
+} as const

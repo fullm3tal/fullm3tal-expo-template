@@ -1,7 +1,7 @@
-import type { ThemeShapes } from "../types";
+import type {ThemeShapes} from '../types'
 
-export const cornerNone = 0;
-export const cornerFull = 9999;
+export const cornerNone = 0
+export const cornerFull = 9999
 
 export const defaultShapes: ThemeShapes = {
   corner: {
@@ -14,4 +14,4 @@ export const defaultShapes: ThemeShapes = {
     extraLargeIncreased: 32,
     extraExtraLarge: 48,
   },
-};
+}
