@@ -27,7 +27,7 @@ jobs:
           corepack prepare yarn@4.10.2 --activate
 
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile # Use 'yarn install --frozen-lockfile' or 'pnpm install --frozen-lockfile' if applicable
+        run: yarn install --immutable # Use 'yarn install --frozen-lockfile' or 'pnpm install --frozen-lockfile' if applicable
 
       - name: Get changed files
         id: changed-files
