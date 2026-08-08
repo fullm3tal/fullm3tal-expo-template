@@ -11,15 +11,15 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: 20
-          cache: 'yarn' # Use 'yarn' or 'pnpm' if you use those package managers
+          node-version: 24
+          # cache: 'yarn' # Use 'yarn' or 'pnpm' if you use those package managers
 
       - name: Enable Corepack
         run: corepack enable
