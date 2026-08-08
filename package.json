@@ -68,6 +68,8 @@
     "production-android": "APP_VARIANT=production expo run:android",
     "production-ios": "APP_VARIANT=production expo run:ios",
     "lint": "expo lint",
+    "prettier": "prettier --check .",
+    "typecheck": "tsc --noEmit",
     "test": "jest"
   },
   "private": true
