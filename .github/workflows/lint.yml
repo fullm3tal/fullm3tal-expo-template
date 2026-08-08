@@ -21,13 +21,19 @@ jobs:
           node-version: 20
           cache: 'yarn' # Use 'yarn' or 'pnpm' if you use those package managers
 
-      - name: Enable Corepack and set Yarn version
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup Yarn
+        run: corepack install --global yarn@4.10.2
+
+      - name: Verify Yarn
         run: |
-          corepack enable
-          corepack prepare yarn@4.10.2 --activate
+          node --version
+          yarn --version
 
       - name: Install Dependencies
-        run: yarn install --immutable # Use 'yarn install --frozen-lockfile' or 'pnpm install --frozen-lockfile' if applicable
+        run: yarn install --immutable
 
       - name: Get changed files
         id: changed-files
