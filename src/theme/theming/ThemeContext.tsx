@@ -1,6 +1,6 @@
-import React from "react";
-import { Theme } from "../types";
+import React from 'react'
+import {Theme} from '../types'
 
-export const ThemeContext = React.createContext<Theme | null>(null);
+export const ThemeContext = React.createContext<Theme | null>(null)
 
-ThemeContext.displayName = "ThemeContext";
+ThemeContext.displayName = 'ThemeContext'

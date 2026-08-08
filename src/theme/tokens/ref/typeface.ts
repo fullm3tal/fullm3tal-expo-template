@@ -1,6 +1,6 @@
-import { Platform } from 'react-native';
+import {Platform} from 'react-native'
 
-import type { Font } from '../../types';
+import type {Font} from '../../types'
 
 /** md.ref.typeface.* — font families and weights. */
 export const typeface = {
@@ -19,4 +19,4 @@ export const typeface = {
   weightMedium: '500' as Font['fontWeight'],
 
   weightBold: '700' as Font['fontWeight'],
-};
+}

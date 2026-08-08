@@ -15,4 +15,4 @@ export const state = {
     thickness: 3,
     outerOffset: 2,
   },
-} as const;
+} as const

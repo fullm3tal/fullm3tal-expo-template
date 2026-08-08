@@ -1,26 +1,15 @@
 export type Font = {
-  fontFamily: string;
-  fontWeight?:
-    | 'normal'
-    | 'bold'
-    | '100'
-    | '200'
-    | '300'
-    | '400'
-    | '500'
-    | '600'
-    | '700'
-    | '800'
-    | '900';
-  fontStyle?: 'normal' | 'italic' | undefined;
-};
+  fontFamily: string
+  fontWeight?: 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'
+  fontStyle?: 'normal' | 'italic' | undefined
+}
 
 export type Fonts = {
-  regular: Font;
-  medium: Font;
-  light: Font;
-  thin: Font;
-};
+  regular: Font
+  medium: Font
+  light: Font
+  thin: Font
+}
 
 export type TypescaleKey =
   | 'displayLarge'
@@ -37,17 +26,17 @@ export type TypescaleKey =
   | 'labelSmall'
   | 'bodyLarge'
   | 'bodyMedium'
-  | 'bodySmall';
+  | 'bodySmall'
 
 export type TypescaleStyle = {
-  fontFamily: string;
-  letterSpacing: number;
-  fontWeight: Font['fontWeight'];
-  lineHeight: number;
-  fontSize: number;
-  fontStyle?: Font['fontStyle'];
-};
+  fontFamily: string
+  letterSpacing: number
+  fontWeight: Font['fontWeight']
+  lineHeight: number
+  fontSize: number
+  fontStyle?: Font['fontStyle']
+}
 
 export type Typescale = Record<TypescaleKey, TypescaleStyle> & {
-  default: Omit<TypescaleStyle, 'lineHeight' | 'fontSize'>;
-};
+  default: Omit<TypescaleStyle, 'lineHeight' | 'fontSize'>
+}

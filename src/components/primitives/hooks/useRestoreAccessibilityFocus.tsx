@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { AccessibilityInfo, findNodeHandle, Platform } from 'react-native';
+import * as React from 'react'
+import {AccessibilityInfo, findNodeHandle, Platform} from 'react-native'
 
 /**
  * Restores screen-reader focus to `ref` when `open` transitions from
@@ -8,19 +8,19 @@ import { AccessibilityInfo, findNodeHandle, Platform } from 'react-native';
  * focus stranded on the root view after the overlay unmounts.
  */
 export function useRestoreAccessibilityFocus(open: boolean, ref: React.RefObject<unknown>) {
-  const wasOpenRef = React.useRef(open);
+  const wasOpenRef = React.useRef(open)
   React.useEffect(() => {
-    const wasOpen = wasOpenRef.current;
-    wasOpenRef.current = open;
+    const wasOpen = wasOpenRef.current
+    wasOpenRef.current = open
     if (Platform.OS === 'web' || !wasOpen || open) {
-      return;
+      return
     }
-    const node = ref.current ? findNodeHandle(ref.current as any) : null;
+    const node = ref.current ? findNodeHandle(ref.current as any) : null
     if (node == null) {
-      return;
+      return
     }
     // Let the content finish unmounting before moving focus back.
-    const timeout = setTimeout(() => AccessibilityInfo.setAccessibilityFocus(node), 50);
-    return () => clearTimeout(timeout);
-  }, [open, ref]);
+    const timeout = setTimeout(() => AccessibilityInfo.setAccessibilityFocus(node), 50)
+    return () => clearTimeout(timeout)
+  }, [open, ref])
 }

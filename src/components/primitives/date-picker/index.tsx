@@ -1,9 +1,9 @@
-import { useCallback } from "react";
-import { type StyleProp, type ViewStyle } from "react-native";
+import {useCallback} from 'react'
+import {type StyleProp, type ViewStyle} from 'react-native'
 
-import ExpoDateTimePicker from "@expo/ui/community/datetime-picker";
+import ExpoDateTimePicker from '@expo/ui/community/datetime-picker'
 
-import { useAppTheme } from "@/theme/theming/useAppTheme";
+import {useAppTheme} from '@/theme/theming/useAppTheme'
 
 // ---------------------------------------------------------------------------
 // Types  (re-exported from @expo/ui for consumer convenience)
@@ -11,11 +11,11 @@ import { useAppTheme } from "@/theme/theming/useAppTheme";
 
 /** Event payload passed to {@link IDatePickerProps.onValueChange}. */
 export interface DateTimePickerChangeEvent {
-  nativeEvent: { timestamp: number; utcOffset: number };
+  nativeEvent: {timestamp: number; utcOffset: number}
 }
 
 /** Picker mode — determines whether the user selects a date, time, or both. */
-export type DatePickerMode = "date" | "time" | "datetime";
+export type DatePickerMode = 'date' | 'time' | 'datetime'
 
 /**
  * Display style.
@@ -23,13 +23,7 @@ export type DatePickerMode = "date" | "time" | "datetime";
  * - Android: `"default"` | `"spinner"`.
  * - iOS: `"default"` | `"spinner"` | `"compact"` | `"inline"`.
  */
-export type DatePickerDisplay =
-  | "default"
-  | "spinner"
-  | "compact"
-  | "inline"
-  | "calendar"
-  | "clock";
+export type DatePickerDisplay = 'default' | 'spinner' | 'compact' | 'inline' | 'calendar' | 'clock'
 
 /**
  * How the picker is presented (Android only).
@@ -39,7 +33,7 @@ export type DatePickerDisplay =
  *
  * On iOS this prop is accepted but ignored (always inline).
  */
-export type DatePickerPresentation = "inline" | "dialog";
+export type DatePickerPresentation = 'inline' | 'dialog'
 
 // ---------------------------------------------------------------------------
 // Interface
@@ -54,7 +48,7 @@ export type DatePickerPresentation = "inline" | "dialog";
  */
 export interface IDatePickerProps {
   /** The current date value (controlled). */
-  value: Date;
+  value: Date
 
   /**
    * Called when the user selects a date or time.
@@ -62,66 +56,66 @@ export interface IDatePickerProps {
    * @param event - Native event containing timestamp and UTC offset.
    * @param date  - The newly selected `Date` object.
    */
-  onValueChange?: (event: DateTimePickerChangeEvent, date: Date) => void;
+  onValueChange?: (event: DateTimePickerChangeEvent, date: Date) => void
 
   /**
    * Picker mode.
    * @default "date"
    */
-  mode?: DatePickerMode;
+  mode?: DatePickerMode
 
   /**
    * Display style.
    * @default "default"
    */
-  display?: DatePickerDisplay;
+  display?: DatePickerDisplay
 
   /**
    * Presentation mode (Android only, ignored on iOS).
    * @default "dialog"
    */
-  presentation?: DatePickerPresentation;
+  presentation?: DatePickerPresentation
 
   /** The earliest selectable date. */
-  minimumDate?: Date;
+  minimumDate?: Date
 
   /** The latest selectable date. */
-  maximumDate?: Date;
+  maximumDate?: Date
 
   /**
    * Accent/tint color applied to the picker.
    * Defaults to the current theme's `primary` color when omitted.
    */
-  accentColor?: string;
+  accentColor?: string
 
   /** Whether the picker is disabled (iOS only). */
-  disabled?: boolean;
+  disabled?: boolean
 
   /** Use 24-hour format (Android only). */
-  is24Hour?: boolean;
+  is24Hour?: boolean
 
   /** Locale identifier, e.g. `"en_US"` (iOS only). */
-  locale?: string;
+  locale?: string
 
   /** IANA time zone name, e.g. `"America/New_York"` (iOS only). */
-  timeZoneName?: string;
+  timeZoneName?: string
 
   /**
    * Force a specific color scheme on the picker (iOS only).
    * Accepts `"dark"` or `"light"`.
    */
-  themeVariant?: "dark" | "light";
+  themeVariant?: 'dark' | 'light'
 
   /** Called when the picker is dismissed without selecting a value (Android only). */
-  onDismiss?: () => void;
+  onDismiss?: () => void
 
   /** A test ID forwarded to the native view. */
-  testID?: string;
+  testID?: string
 
   /**
    * Additional styles applied to the picker container.
    */
-  style?: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>
 }
 
 // ---------------------------------------------------------------------------
@@ -157,7 +151,7 @@ export interface IDatePickerProps {
 function DatePicker({
   value,
   onValueChange,
-  mode = "date",
+  mode = 'date',
   display,
   presentation,
   minimumDate,
@@ -172,17 +166,17 @@ function DatePicker({
   testID,
   style,
 }: IDatePickerProps) {
-  const { colors, dark } = useAppTheme();
+  const {colors, dark} = useAppTheme()
 
-  const resolvedAccent = accentColor ?? (colors.primary as string);
-  const resolvedThemeVariant = themeVariant ?? (dark ? "dark" : "light");
+  const resolvedAccent = accentColor ?? (colors.primary as string)
+  const resolvedThemeVariant = themeVariant ?? (dark ? 'dark' : 'light')
 
   const handleValueChange = useCallback(
     (event: DateTimePickerChangeEvent, date: Date) => {
-      onValueChange?.(event, date);
+      onValueChange?.(event, date)
     },
     [onValueChange],
-  );
+  )
 
   return (
     <ExpoDateTimePicker
@@ -203,9 +197,9 @@ function DatePicker({
       testID={testID}
       style={style}
     />
-  );
+  )
 }
 
-DatePicker.displayName = "DatePicker";
+DatePicker.displayName = 'DatePicker'
 
-export default DatePicker;
+export default DatePicker

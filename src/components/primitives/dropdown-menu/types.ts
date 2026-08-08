@@ -1,97 +1,88 @@
-import type {
-  ForceMountable,
-  PositionedContentProps,
-  PressableRef,
-  SlottablePressableProps,
-  SlottableTextProps,
-  SlottableViewProps,
-  TextRef,
-  ViewRef,
-} from "../types";
+import type {ForceMountable, PositionedContentProps, PressableRef, SlottablePressableProps, SlottableTextProps, SlottableViewProps, TextRef, ViewRef} from '../types'
 
 type RootProps = SlottableViewProps & {
-  onOpenChange?: (open: boolean) => void;
-};
+  onOpenChange?: (open: boolean) => void
+}
 
 interface PortalProps extends ForceMountable {
-  children: React.ReactNode;
+  children: React.ReactNode
   /**
    * Platform: NATIVE ONLY
    */
-  hostName?: string;
+  hostName?: string
   /**
    * Platform: WEB ONLY
    */
-  container?: HTMLElement | null | undefined;
+  container?: HTMLElement | null | undefined
 }
 
 type OverlayProps = ForceMountable &
   SlottablePressableProps & {
-    closeOnPress?: boolean;
-  };
+    closeOnPress?: boolean
+  }
 
 type ItemProps = SlottablePressableProps & {
-  textValue?: string;
-  closeOnPress?: boolean;
-};
+  textValue?: string
+  closeOnPress?: boolean
+}
 
 type CheckboxItemProps = SlottablePressableProps & {
-  checked: boolean;
-  onCheckedChange: (checked: boolean) => void;
-  closeOnPress?: boolean;
-  textValue?: string;
-};
+  checked: boolean
+  onCheckedChange: (checked: boolean) => void
+  closeOnPress?: boolean
+  textValue?: string
+}
 
 type RadioGroupProps = SlottableViewProps & {
-  value: string | undefined;
-  onValueChange: (value: string) => void;
-};
+  value: string | undefined
+  onValueChange: (value: string) => void
+}
 
 type RadioItemProps = SlottablePressableProps & {
-  value: string;
-  textValue?: string;
-  closeOnPress?: boolean;
-};
+  value: string
+  textValue?: string
+  closeOnPress?: boolean
+}
 
 type SeparatorProps = SlottableViewProps & {
-  decorative?: boolean;
-};
+  decorative?: boolean
+}
 
 type SubProps = SlottableViewProps & {
-  defaultOpen?: boolean;
-  open?: boolean;
-  onOpenChange?: (value: boolean) => void;
-};
+  defaultOpen?: boolean
+  open?: boolean
+  onOpenChange?: (value: boolean) => void
+}
 
 type SubTriggerProps = SlottablePressableProps & {
-  textValue?: string;
-};
+  textValue?: string
+}
 
-type TriggerProps = SlottablePressableProps;
-type ContentProps = SlottablePressableProps & PositionedContentProps;
-type SubContentProps = SlottablePressableProps & ForceMountable;
-type ItemIndicatorProps = SlottableViewProps & ForceMountable;
-type GroupProps = SlottableViewProps;
-type LabelProps = SlottableTextProps;
+type TriggerProps = SlottablePressableProps
+type ContentProps = SlottablePressableProps & PositionedContentProps
+type SubContentProps = SlottablePressableProps & ForceMountable
+type ItemIndicatorProps = SlottableViewProps & ForceMountable
+type GroupProps = SlottableViewProps
+type LabelProps = SlottableTextProps
 
-type CheckboxItemRef = PressableRef;
-type ContentRef = ViewRef;
-type GroupRef = ViewRef;
-type ItemIndicatorRef = ViewRef;
-type ItemRef = PressableRef;
-type LabelRef = TextRef;
-type OverlayRef = PressableRef;
-type RadioGroupRef = ViewRef;
-type RadioItemRef = PressableRef;
-type RootRef = ViewRef;
-type SeparatorRef = ViewRef;
-type SubContentRef = PressableRef;
-type SubRef = ViewRef;
-type SubTriggerRef = PressableRef;
+type CheckboxItemRef = PressableRef
+type ContentRef = ViewRef
+type GroupRef = ViewRef
+type ItemIndicatorRef = ViewRef
+type ItemRef = PressableRef
+type LabelRef = TextRef
+type OverlayRef = PressableRef
+type RadioGroupRef = ViewRef
+type RadioItemRef = PressableRef
+type RootRef = ViewRef
+type SeparatorRef = ViewRef
+type SubContentRef = PressableRef
+type SubRef = ViewRef
+type SubTriggerRef = PressableRef
 type TriggerRef = PressableRef & {
-  open: () => void;
-  close: () => void;
-};
+  open: () => void
+  close: () => void
+}
 
 export type {
   CheckboxItemProps,
@@ -125,4 +116,4 @@ export type {
   SubTriggerRef,
   TriggerProps,
   TriggerRef,
-};
+}

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { AccessibilityInfo, findNodeHandle } from 'react-native';
+import * as React from 'react'
+import {AccessibilityInfo, findNodeHandle} from 'react-native'
 
 /**
  * Moves screen reader (VoiceOver/TalkBack) focus to the attached element when `enabled`
@@ -12,24 +12,24 @@ import { AccessibilityInfo, findNodeHandle } from 'react-native';
  * plain (non-accessible) container, focus lands on its first accessible descendant.
  */
 export function useAccessibilityFocus<T>(enabled: boolean = true) {
-  const ref = React.useRef<T>(null);
+  const ref = React.useRef<T>(null)
 
   React.useEffect(() => {
     if (!enabled) {
-      return;
+      return
     }
     // Small delay so the view is mounted and mounting animations have started;
     // setting focus synchronously on mount is unreliable on both platforms.
     const timeout = setTimeout(() => {
-      const node = findNodeHandle(ref.current as React.Component | null);
+      const node = findNodeHandle(ref.current as React.Component | null)
       if (node != null) {
-        AccessibilityInfo.setAccessibilityFocus(node);
+        AccessibilityInfo.setAccessibilityFocus(node)
       }
-    }, 50);
+    }, 50)
     return () => {
-      clearTimeout(timeout);
-    };
-  }, [enabled]);
+      clearTimeout(timeout)
+    }
+  }, [enabled])
 
-  return ref;
+  return ref
 }
