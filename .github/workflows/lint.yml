@@ -34,3 +34,9 @@ jobs:
       - name: Run ESLint
         if: steps.changed-files.outputs.any_changed == 'true'
         run: yarn eslint ${{ steps.changed-files.outputs.all_changed_files }}
+
+      - name: Run Prettier
+        run: yarn prettier
+
+      - name: Run Typecheck
+        run: yarn typecheck
