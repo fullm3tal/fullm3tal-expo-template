@@ -1,7 +1,7 @@
-import Text from '@/components/primitives/text'
-import {useLanguage} from '@/locales/LanguageProvider'
-import {useAppTheme} from '@/theme/theming/useAppTheme'
-import type {ColorScheme, ColorTheme} from '@/theme/tokens/color'
+import Text from '@/shared/components/text'
+import {useLanguage} from '@/shared/locale/language-provider'
+import {useAppTheme} from '@/shared/theme/theming/use-app-theme'
+import type {ColorScheme, ColorTheme} from '@/shared/theme/tokens/color'
 import {useTranslation} from 'react-i18next'
 import {Pressable, ScrollView, StyleSheet, View} from 'react-native'
 
