@@ -57,7 +57,7 @@
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "web": "expo run:web",
+    "web": "expo start --web",
     "dev-pull": "eas env:pull --environment development && APP_VARIANT=development npx expo prebuild --clean",
     "preview-pull": "eas env:pull --environment preview && APP_VARIANT=preview npx expo prebuild --clean",
     "production-pull": "eas env:pull --environment production && APP_VARIANT=production npx expo prebuild --clean",
