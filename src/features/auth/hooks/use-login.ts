@@ -2,8 +2,8 @@ import KeystoreClient from '@/infrastructure/keystore/keystore-client'
 import { KeystoreKeys } from '@/infrastructure/keystore/keystore-keys'
 import { useAuthStore } from '@/shared/store/auth-store'
 import { useForm } from 'react-hook-form'
+import type { LoginRequest } from '../data/types'
 import { useLoginMutation } from '../data/use-login-mutation'
-import type { LoginRequest } from '../domain/types'
 
 export function useLogin() {
   const { setUser } = useAuthStore()
