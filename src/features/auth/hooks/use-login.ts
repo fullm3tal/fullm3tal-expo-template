@@ -1,9 +1,8 @@
 import KeystoreClient from '@/infrastructure/keystore/keystore-client'
 import { KeystoreKeys } from '@/infrastructure/keystore/keystore-keys'
 import { useAuthStore } from '@/shared/store/auth-store'
-import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
-import { authService } from '../data/auth-service'
+import { useLoginMutation } from '../data/use-login-mutation'
 import type { LoginRequest } from '../domain/types'
 
 export function useLogin() {
@@ -13,8 +12,7 @@ export function useLogin() {
     defaultValues: { email: '', password: '' },
   })
 
-  const mutation = useMutation({
-    mutationFn: (payload: LoginRequest) => authService.login(payload),
+  const mutation = useLoginMutation({
     onSuccess: async (data) => {
       await Promise.all([
         KeystoreClient.save(KeystoreKeys.ACCESS_TOKEN, data.accessToken),
