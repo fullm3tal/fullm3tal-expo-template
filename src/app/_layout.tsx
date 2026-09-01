@@ -12,7 +12,11 @@ export default function RootLayout() {
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
         <ThemeProvider>
-          <Stack />
+          <Stack
+            screenOptions={{
+              headerShown: false,
+            }}
+          />
         </ThemeProvider>
       </LanguageProvider>
     </QueryClientProvider>
