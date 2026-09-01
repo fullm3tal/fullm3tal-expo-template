@@ -11,7 +11,7 @@ import {
 import {useRouter} from 'expo-router'
 import {useAppTheme} from '@/shared/theme/theming/use-app-theme'
 import type {ErrorResponse} from '@/shared/types/remote/error-response'
-import {useLogin} from './use-login'
+import {useLogin} from '../hooks/use-login'
 
 export function LoginScreen() {
   const {colors, fonts, shapes} = useAppTheme()
