@@ -1,3 +1,3 @@
-export {SignInScreen} from './ui/sign-in-screen'
+export {LoginScreen} from './ui/login-screen'
 export {SignUpScreen} from './ui/sign-up-screen'
-export type {AuthUser, SignInRequest, SignInResponse} from './domain/types'
+export type {AuthUser, LoginRequest, LoginResponse} from './domain/types'

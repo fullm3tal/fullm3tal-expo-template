@@ -2,12 +2,12 @@ import type {AuthUser} from '@/shared/store/auth-store'
 
 export type {AuthUser}
 
-export interface SignInRequest {
+export interface LoginRequest {
   email: string
   password: string
 }
 
-export interface SignInResponse {
+export interface LoginResponse {
   user: AuthUser
   accessToken: string
   refreshToken: string

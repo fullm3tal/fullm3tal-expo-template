@@ -1,11 +1,11 @@
 import { service } from '@/infrastructure/network/client'
 import { Endpoints } from '@/infrastructure/network/endpoints'
-import type { SignInRequest, SignInResponse } from '../domain/types'
+import type { LoginRequest, LoginResponse } from '../domain/types'
 
 export const authService = {
-  signIn: (payload: SignInRequest): Promise<SignInResponse> =>
-    service.post<SignInRequest, SignInResponse>(Endpoints.auth.signIn, payload),
+  login: (payload: LoginRequest): Promise<LoginResponse> =>
+    service.post<LoginRequest, LoginResponse>(Endpoints.auth.login, payload),
 
-  signUp: (payload: SignInRequest): Promise<SignInResponse> =>
-    service.post<SignInRequest, SignInResponse>(Endpoints.auth.signUp, payload),
+  signUp: (payload: LoginRequest): Promise<LoginResponse> =>
+    service.post<LoginRequest, LoginResponse>(Endpoints.auth.signUp, payload),
 }

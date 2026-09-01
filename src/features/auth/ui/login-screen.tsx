@@ -11,13 +11,13 @@ import {
 import {useRouter} from 'expo-router'
 import {useAppTheme} from '@/shared/theme/theming/use-app-theme'
 import type {ErrorResponse} from '@/shared/types/remote/error-response'
-import {useSignIn} from './use-sign-in'
+import {useLogin} from './use-login'
 
-export function SignInScreen() {
+export function LoginScreen() {
   const {colors, fonts, shapes} = useAppTheme()
   const {t} = useTranslation()
   const router = useRouter()
-  const {form, onSubmit, isPending, error} = useSignIn()
+  const {form, onSubmit, isPending, error} = useLogin()
 
   const apiError = error as ErrorResponse | null
 
@@ -26,7 +26,7 @@ export function SignInScreen() {
       {/* Header */}
       <View style={styles.header}>
         <Text style={[fonts.headlineMedium, {color: colors.onBackground}]}>
-          {t('sign_in_title')}
+          {t('login_title')}
         </Text>
         <Text
           style={[
@@ -34,7 +34,7 @@ export function SignInScreen() {
             {color: colors.onSurfaceVariant, marginTop: 4},
           ]}
         >
-          {t('sign_in_subtitle')}
+          {t('login_subtitle')}
         </Text>
       </View>
 
@@ -48,7 +48,7 @@ export function SignInScreen() {
           render={({field: {onChange, onBlur, value}, fieldState: {error: fieldError}}) => (
             <View>
               <Text style={[fonts.labelLarge, {color: colors.onSurface, marginBottom: 6}]}>
-                {t('sign_in_email_label')}
+                {t('login_email_label')}
               </Text>
               <TextInput
                 style={[
@@ -81,7 +81,7 @@ export function SignInScreen() {
           render={({field: {onChange, onBlur, value}, fieldState: {error: fieldError}}) => (
             <View>
               <Text style={[fonts.labelLarge, {color: colors.onSurface, marginBottom: 6}]}>
-                {t('sign_in_password_label')}
+                {t('login_password_label')}
               </Text>
               <TextInput
                 style={[
@@ -127,7 +127,7 @@ export function SignInScreen() {
             <ActivityIndicator color={colors.onPrimary as string} />
           ) : (
             <Text style={[fonts.labelLarge, {color: colors.onPrimary}]}>
-              {t('sign_in_submit')}
+              {t('login_submit')}
             </Text>
           )}
         </Pressable>
