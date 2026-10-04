@@ -74,6 +74,6 @@
     "dep": "rm -rf node_modules && yarn install",
     "test": "jest"
   },
-  "private": true,
+  "private": false,
   "packageManager": "yarn@4.10.2"
 }
